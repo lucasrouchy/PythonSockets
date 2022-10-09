@@ -9,8 +9,11 @@ encodedht = ht.encode("ISO-8859-1")
 
 s.connect((f"{website}", port))
 s.sendall(encodedht)
-o = s.recv(4096)
-de = o.decode("ISO-8859-1")
-print(de)
-if len(o) == 0:
-    s.close()
+while True:
+    o = s.recv(2)
+    de = o.decode("ISO-8859-1")
+    print(de)
+    if len(o) == 0:
+        
+        s.close()
+        break
